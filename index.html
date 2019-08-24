@@ -1,0 +1,434 @@
+<script>
+
+/*-------------------------stacks----------------------------------------*/
+
+//     var Stack = function() {
+//     this.count = 0;
+//     this.storage = {};
+
+//     this.push = function(value) {
+//         this.storage[this.count] = value;
+//         this.count++;
+//     }
+
+//     this.pop = function() {
+//         if (this.count === 0) {
+//             return undefined;
+//         }
+//         this.count--; 
+//         var result = this.storage[this.count];
+//         delete this.storage[this.count];
+//         return result;
+//     }
+
+//     this.size = function() {
+//         return this.count;
+//     }
+
+//     this.peek = function() {
+//         return this.storage[this.count-1];
+//     }
+// }
+
+//     var myStack = new Stack();
+//     myStack.push(1);
+//     myStack.push(2);
+    
+//     console.log(myStack.peek());
+//     console.log(myStack.pop());
+//     console.log(myStack.peek());
+    /*-----------------------------------------------------------------*/
+
+
+/*--------------------------Sets---------------------------------------*/
+    // function mySet() {
+    //     var collection = [];
+
+    //     this.has = function(ele) {
+    //         return (collection.indexOf(ele) !== -1);
+    //     };
+
+    //     this.values = function() {
+    //         return collection;
+    //     };
+
+    //     this.add = function(ele) {
+    //         if(!this.has(ele)) {
+    //             collection.push(ele);
+    //             return true;
+    //         }
+    //         return false;
+    //     };
+        
+    //     this.remove = function(ele) {
+    //         if(this.has(ele)) {
+    //             index = collection.indexOf(ele);
+    //             collection.splice(index, 1);
+    //         }
+    //     };
+
+    //     this.size = function() {
+    //         return collection.length;
+    //     };
+
+    //     this.union = function(otherSet) {
+    //         var unionSet = new mySet();
+    //         var firstSet = this.values();
+    //         var secondSet = otherSet.values();
+    //         firstSet.forEach(function(e) {
+    //             unionSet.add(e);
+    //         });
+    //         secondSet.forEach(function(e) {
+    //             unionSet.add(e);
+    //         });
+    //         return unionSet;
+    //     };
+
+    //     this.intersection = function(otherSet) {
+    //         var intersectionSet = new mySet();
+    //         var firstSet = this.values();
+    //         firstSet.forEach(function(e) {
+    //             if (otherSet.has(e)) {
+    //                 intersectionSet.add(e);
+    //             };
+    //         });
+    //         return intersectionSet;
+    //     };
+
+    //     this.difference = function(otherSet) {
+    //         var differenceSet = new mySet();
+    //         var firstSet = this.values();
+    //         firstSet.forEach(function(e) {
+    //             if(!otherSet.has(e)) {
+    //                 differenceSet.add(e);
+    //             }
+    //         });
+    //         return differenceSet;
+    //     };
+
+    //     this.subset = function(otherSet) {
+    //         var firstSet = this.values();
+    //         return firstSet.every(function(value) {
+    //             return otherSet.has(value);
+    //         });
+    //     };
+    // }
+
+    // var setA = new mySet();
+    // var setB = new mySet();
+
+    // setA.add("a");
+    // setB.add("b");
+    // setB.add("c");
+    // setB.add("a");
+    // setB.add("a");
+
+    // console.log(setA.intersection(setB).values());
+    // console.log(setB.difference(setA).values());
+
+    /*-----------------------------------------------------------------*/
+
+
+
+    /*-----------------------------Queues------------------------------------*/
+
+    // function myQueue() {
+    //     collection =[];
+    //     this.print = function() {
+    //         console.log(collection);
+    //     };
+    //     this.enqueue = function(ele) {
+    //         collection.push(ele);
+    //     };
+    //     this.dequeue = function() {
+    //         return collection.shift();
+    //     };
+    //     this.front = function() {
+    //         return collection[0];
+    //     };
+    //     this.size = function() {
+    //         return collection.length;
+    //     };
+    //     this.isEmpty = function() {
+    //         return (collection.length === 0);
+    //     };
+    // }
+
+    // var q = new myQueue();
+    // q.enqueue("a");
+    // q.enqueue("b");
+    // q.enqueue("c");
+    // q.enqueue("d");
+    // q.print();
+    // q.dequeue();
+    // console.log(q.front());
+    // q.print();
+
+    // function priorityQueue() {
+    //     var collection = [];
+
+    //     this.printCollection = function() {
+    //         console.log(collection);
+    //     };
+    //     this.enqueue = function(ele) {
+    //         if (this.isEmpty()) {
+    //             collection.push(ele);
+    //         } else {
+    //             var added = false;
+    //             for (let i = 0; i < collection.length; i++) {
+    //                 if(ele[1] < collection[i][1]) {
+    //                     collection.splice(i, 0, ele);
+    //                     added = true;
+    //                     break;
+    //                 }                    
+    //             }
+    //             if (!added) {
+    //                 collection.push(ele);
+    //             }
+    //         }
+    //     };
+    //     this.dequeue = function() {
+    //         var value = collection.shift();
+    //         return value;
+    //     };
+    //     this.front = function() {
+    //         return collection[0];
+    //     };
+    //     this.size = function() {
+    //         return collection.length;
+    //     };
+    //     this.isEmpty = function() {
+    //         return (collection.length === 0);
+    //     };
+    // }
+
+    // var pq = new priorityQueue();
+    // pq.enqueue(["s sad ad", 2]);
+    // pq.enqueue(["dad", 3]);
+    // pq.enqueue(["add add ", 4]);
+    
+    
+    // pq.printCollection();
+    // pq.dequeue();   
+    // console.log(pq.front());
+    // pq.printCollection();
+
+    /*-----------------------------------------------------------------*/
+
+
+    class Node {
+        constructor(data, left = null, right = null) {
+            this.data = data;
+            this.left = left;
+            this.right = right;
+        }
+    }
+
+    class BST {
+        constructor() {
+            this.root = null;
+        }
+        add(data) {
+            const node = this.root;
+            if(node === null) {
+                this.root = new Node(data);
+                return;
+            } else {
+                const searchTree = function(node) {
+                    if(data < node.data) {
+                        if(node.left === null) {
+                            node.left = new Node(data);
+                            return;
+                        } else if (node.left !== null) {
+                            return searchTree(node.left);
+                        }
+                    } else if (data > node.data) {
+                        if (node.right === null) {
+                            node.right = new Node(data);
+                            return;
+                        } else if (node.right !== null) {
+                            return searchTree(node.right);
+                        }
+                    }else {
+                        return null;
+                    }
+                };
+                return searchTree(node);
+            }
+        };
+        findMin() {
+            let current = this.root;
+            while (current.left !== null) {
+                current = current.left;
+            }
+            return current.data;
+        };
+
+        findMax() {
+            let current = this.root;
+            while(current.right !== null) {
+                current = current.right;
+            }
+            return current.data;
+        };
+        find(data) {
+            let current = this.root;
+            while(current.data !== data) {
+                if (data < current.data) {
+                    current = current.left;
+                } else {
+                    current = current.right;
+                }
+                if (current === null) {
+                    return null;   
+                }
+            }
+            return current;
+        };
+
+        isPresent(data) {
+            let current = this.root;
+            while (current) {
+                if (data === current.data) {
+                    return true;
+                }
+                if (data > current.data) {
+                    current = current.left;
+                }else {
+                    current = current.right;
+                }
+            }
+            return false;
+        };   
+        remove(data) {
+            const removeNode = function(node, data) {
+                if (node == null) {
+                    return null;
+                }
+                if (data == node.data) {
+                    if  (node.left == null && node.right == null) {
+                        return null;
+                    }
+                    
+                    if  (node.left == null) {
+                        return node.right;
+                    }
+                    
+                    if (node.right == null) {
+                        return node.left;
+                    }
+
+                    var tempNode = node.right;
+                    while(tempNode.left !== null) {
+                        tempNode = tempNode.left;
+                    }
+                    node.data = tempNode.data;
+                    node.right = removeNode(node.right, tempNode.data);
+                    return node;
+                } else if (data < node.data) {
+                    node.left = removeNode(node.left, data);
+                    return node;
+                } else {
+                    node.right = removeNode(node.right, data);
+                    return node;
+                }
+            };
+            this.root = removeNode(this.root, data);
+        };
+
+        findMinHeight(node = this.root) {
+            if (node == null) {
+                return -1;
+            }
+            let left = this.findMinHeight(node.left);
+            let right = this.findMaxHeight(node.right);
+
+            if  (left < right) {
+                return left + 1;
+            } else {
+                return right + 1;
+            }
+        };
+
+        findMaxHeight(node = this.root) {
+            if (node == null) {
+                return -1;
+            }
+            let left = this.findMaxHeight(node.left);
+            let right = this.findMaxHeight(node.right);
+
+            if  (left > right) {
+                return left +1;
+            } else {
+                return right + 1;
+            }
+        };
+        isBalanced() {
+            return (this.findMinHeight() >= this.findMaxHeight() - 1);
+        };
+
+        inOrder() {
+            if (this.root == null) {
+                return null;
+            } else {
+                var result = new Array();
+                function traverseInOrder(node) {
+                    node.left && traverseInOrder(node.left);
+                    result.push(node.data);
+                    node.right && traverseInOrder(node.right);
+                };
+                traverseInOrder(this.root);
+                return result;
+            }
+        };
+        perOrder() {
+            if (this.root == null) {
+                return null;
+            }else {
+                var result = new Array();
+                function traversePreOrder(node) {
+                    result.push(node.data);
+                    node.left && traversePreOrder(node.left);
+                    node.right && traversePreOrder(node.right);
+                };
+                traversePreOrder(this.root);
+                return result;
+            }
+        };
+        postOrder() {
+            if (this.root == null) {
+                return null;
+            } else {
+                var result = new Array();
+                function traversePostOrder(node) {
+                    node.left && traversePostOrder(node.left);
+                    node.right && traversePostOrder(node.right);
+                    result.push(node.data);
+                };
+                traversePostOrder(this.root);
+                return result;
+            }
+        };  
+        levelOrder() {
+            let result = [];
+            let q = [];
+            if (this.root != null) {
+                q.push(this.root);
+                while(q.length > 0) {
+                    let node = q.shift();
+                    result.push(node.data);
+                    if (node.left != null) {
+                        q.push(node.left);
+                    }
+                    if (node.right != null) {
+                        q.push(node.right);
+                    }
+                }
+                return result;
+            } else {
+                return null;
+            }
+        };
+    }
+
+</script>
